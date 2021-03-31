@@ -4,12 +4,11 @@ import java.util.Scanner;
 
 public class Main {
 
-    public static int[] binaryToDecimal(int decimalNumber) {
-        int[] binaryNumber = new int[30];
-        int index = 0;
+    public static String binaryToDecimal(int decimalNumber) {
+        String binaryNumber = "";
 
         while (decimalNumber > 0) {
-            binaryNumber[index++] = decimalNumber % 2;
+            binaryNumber = (decimalNumber % 2) + binaryNumber;
             decimalNumber = (decimalNumber / 2);
         }
         return binaryNumber;
@@ -49,10 +48,8 @@ public class Main {
                     System.out.println("Konwersja dziesietne - binarne.");
                     System.out.println("Podaj liczbe jaka chcesz poddac konwersji");
                     int decimalNumber = scanner.nextInt();
-                    int[] result = binaryToDecimal(decimalNumber);
-                    for (int i = result.length - 1; i >= 0; i--) {
-                        System.out.print(result[i]);
-                    }
+                    String result = binaryToDecimal(decimalNumber);
+                    System.out.print(result);
                     System.out.println();
                     break;
                 case 2:
