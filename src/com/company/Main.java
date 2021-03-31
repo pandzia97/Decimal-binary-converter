@@ -1,32 +1,29 @@
 package com.company;
 
+import java.util.Locale;
 import java.util.Scanner;
 
 public class Main {
 
     public static String binaryToDecimal(int decimalNumber) {
-        String binaryNumber = "";
+        StringBuilder builder = new StringBuilder();
 
         while (decimalNumber > 0) {
-            binaryNumber = (decimalNumber % 2) + binaryNumber;
-            decimalNumber = (decimalNumber / 2);
+            builder.insert(0, decimalNumber % 2);
+            decimalNumber /= 2;
         }
-        return binaryNumber;
+        return builder.toString();
     }
 
     public static int decimalToBinary(int binaryNumber) {
         int decimalNumber = 0;
         int power = 0;
 
-        while (true) {
-            if (binaryNumber == 0) {
-                break;
-            } else {
-                int temp = binaryNumber % 10;
-                decimalNumber += temp * Math.pow(2, power);
-                binaryNumber = binaryNumber / 10;
-                power++;
-            }
+        while (binaryNumber != 0) {
+            int temp = binaryNumber % 10;
+            decimalNumber += temp * Math.pow(2, power);
+            binaryNumber /= 10;
+            power++;
         }
         return decimalNumber;
     }
